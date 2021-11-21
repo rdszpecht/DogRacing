@@ -1,6 +1,7 @@
 package dogRacing;
 
 import dogRacing.dogs.Dog;
+import dogRacing.dogs.DogBuilder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +13,7 @@ public class DogTest {
 
     @BeforeEach
     public void beforeEach(){
-        this.dog = new Dog();
+        this.dog = DogBuilder.newDog();
     }
 
     @Test
@@ -27,13 +28,11 @@ public class DogTest {
 
     @Test
     public void testWhenNewDogThenNameIsSameAsIntroduced(){
-        assertTrue(new Dog("Pedrito", "Doberman").getName() == "Pedrito");
+        assertTrue(DogBuilder.newDog("Pedrito", "Doberman").getName() == "Pedrito");
     }
-
 
     @Test
     public void testGivenDogThenHasSpeed(){
-        assertTrue(new Dog("Pedrito", "Doberman").getSpeed() > 0.0);
+        assertTrue(DogBuilder.newDog("Pedrito", "Doberman").getSpeed() > 0.0);
     }
-
 }

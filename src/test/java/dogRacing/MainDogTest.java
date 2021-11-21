@@ -1,6 +1,7 @@
 package dogRacing;
 
     import dogRacing.dogs.Dog;
+    import dogRacing.dogs.DogBuilder;
     import org.junit.jupiter.api.BeforeEach;
     import org.junit.jupiter.api.Test;
 
@@ -32,8 +33,8 @@ public class MainDogTest {
         this.args = new String[1];
         this.mainDog = new MainDog();
 
-        this.fastestDog = new Dog("Assasin", "greyhound");
-        this.slowestDog = new Dog("Slowbro", "dalmatian");
+        this.fastestDog = DogBuilder.newDog("Assasin", "greyhound");
+        this.slowestDog = DogBuilder.newDog("Slowbro", "dalmatian");
     }
 
     @Test

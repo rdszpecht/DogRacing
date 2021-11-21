@@ -23,4 +23,7 @@ public abstract class DogBuilder {
                 return new MixedRace(name);
         }
     }
+    public static Dog newDog(){
+        return new MixedRace("Unknown");
+    }
 }
