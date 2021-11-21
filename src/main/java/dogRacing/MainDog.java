@@ -1,11 +1,10 @@
 package dogRacing;
 
+import dogRacing.dogs.Dog;
 import utils.Console;
 
-import java.util.*;
-
 public class MainDog {
-    
+
     public static void main(String args[]) {
         Console console = Console.getInstance();
 
@@ -61,6 +60,6 @@ public class MainDog {
         console.writeln("Thanks for participating!!");
 
     }
-    
+
 }
 	
