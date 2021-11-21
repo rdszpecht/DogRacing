@@ -4,9 +4,14 @@ import dogRacing.dogs.Dog;
 import dogRacing.dogs.DogBuilder;
 import utils.Console;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Race {
 
     private Console console;
+    private List<Dog> dogs = new ArrayList<>();
+    private final int NUMBER_DOGS = 2;
 
     public Race(){
         this.console = Console.getInstance();
@@ -14,25 +19,26 @@ public class Race {
 
     public void runRace(){
         console.writeln("Welcome to the first Dog Race");
-        String d1n = console.readString("Input a name for your pet: ");
-        String d1b = console.readString("Input the breed of your dog: ");
-        Dog d1 = DogBuilder.newDog(d1n, d1b);
-        String d2n = console.readString("Input a name for your pet: ");
-        String d2b = console.readString("Input the breed of your dog: ");
-        Dog d2 = DogBuilder.newDog(d2n, d2b);
+        
+        for (int i = 0; i < NUMBER_DOGS; i++) {
+            String dogName = console.readString("Input a name for your pet: ");
+            String dogBreed = console.readString("Input the breed of your dog: ");
+            dogs.add(DogBuilder.newDog(dogName, dogBreed));
+
+            console.writeln(dogs.get(i).getName() + " has a speed of: " + dogs.get(i).getSpeed());
+        }
+
         String winner = "";
         String loser = "";
-        console.writeln(d1.getName() + " has a speed of: " + d1.getSpeed());
-        console.writeln(d2.getName() + " has a speed of: " + d2.getSpeed());
 
-        if (d1.getSpeed() > d2.getSpeed()) {
-            console.writeln(d1.getName() + " is the fastest dog");
-            winner = d1.getName();
-            loser = d2.getName();
-        } else if ((d2.getSpeed() > d1.getSpeed())) {
-            console.writeln(d2.getName() + " is the fastest dog");
-            winner = d2.getName();
-            loser = d1.getName();
+        if (dogs.get(0).getSpeed() > dogs.get(1).getSpeed()) {
+            console.writeln(dogs.get(0).getName() + " is the fastest dog");
+            winner = dogs.get(0).getName();
+            loser = dogs.get(1).getName();
+        } else if ((dogs.get(1).getSpeed() > dogs.get(0).getSpeed())) {
+            console.writeln(dogs.get(1).getName() + " is the fastest dog");
+            winner = dogs.get(1).getName();
+            loser = dogs.get(0).getName();
         } else {
             console.writeln("Both dogs are equally as fast");
 
