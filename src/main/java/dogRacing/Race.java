@@ -3,6 +3,7 @@ package dogRacing;
 import dogRacing.Prices.Price;
 import dogRacing.dogs.Dog;
 import dogRacing.dogs.DogBuilder;
+import dogRacing.utils.Message;
 import utils.Console;
 
 import java.util.ArrayList;
@@ -22,26 +23,21 @@ public class Race {
     }
 
     public void runRace(){
-        welcomeMessage();
+        console.writeln(Message.WELCOME.toString());
 
         createDogs();
+        for (int i = 0; i < NUMBER_DOGS; i++) {
+            console.writeln(dogs.get(i).getName() + Message.SPEED_OF + dogs.get(i).getSpeed());
+        }
 
         competeInRace();
 
         winnerPriceSelection();
 
-        prices();
+        console.writeln(winner + Message.OBTAINED + winnerprice + Message.WINNER_PRICE);
+        console.writeln(loser + Message.LOSER_PRICE);
 
-        finale();
-    }
-
-    private void finale() {
-        console.writeln("Thanks for participating!!");
-    }
-
-    private void prices() {
-        console.writeln(winner + " has obtained " + winnerprice + " as a reward for him winning, also a special signature bowl!");
-        console.writeln(loser + " also wins a special signature bowl for his great performance!");
+        console.writeln(Message.GOODBYE.toString());
     }
 
     private void competeInRace() {
@@ -49,39 +45,32 @@ public class Race {
         loser = "";
 
         if (dogs.get(0).getSpeed() > dogs.get(1).getSpeed()) {
-            console.writeln(dogs.get(0).getName() + " is the fastest dog");
+            console.writeln(dogs.get(0).getName() + " " + Message.FASTEST_DOG);
             winner = dogs.get(0).getName();
             loser = dogs.get(1).getName();
         } else if ((dogs.get(1).getSpeed() > dogs.get(0).getSpeed())) {
-            console.writeln(dogs.get(1).getName() + " is the fastest dog");
+            console.writeln(dogs.get(1).getName() + " " + Message.FASTEST_DOG);
             winner = dogs.get(1).getName();
             loser = dogs.get(0).getName();
         } else {
-            console.writeln("Both dogs are equally as fast");
+            console.writeln(Message.DRAW.toString());
 
         }
     }
 
     private void winnerPriceSelection() {
-        console.writeln("As a recognition for " + winner + ", winner of the race, he can chose a special price");
+        console.write(Message.RECOGNITION + winner);
+        console.writeln(Message.WINNER.toString());
         this.price.printAvaiablePrices();
 
         winnerprice = price.selectSpecialPrice();
-
     }
 
     private void createDogs() {
         for (int i = 0; i < NUMBER_DOGS; i++) {
-            String dogName = console.readString("Input a name for your pet: ");
-            String dogBreed = console.readString("Input the breed of your dog: ");
+            String dogName = console.readString(Message.NAME_SELECT.toString());
+            String dogBreed = console.readString(Message.BREED_SELECT.toString());
             dogs.add(DogBuilder.newDog(dogName, dogBreed));
         }
-        for (int i = 0; i < NUMBER_DOGS; i++) {
-            console.writeln(dogs.get(i).getName() + " has a speed of: " + dogs.get(i).getSpeed());
-        }
-    }
-
-    private void welcomeMessage() {
-        console.writeln("Welcome to the first Dog Race");
     }
 }
