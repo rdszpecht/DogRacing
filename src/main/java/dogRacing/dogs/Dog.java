@@ -1,16 +1,26 @@
 package dogRacing.dogs;
 
+import dogRacing.Prices.Price;
+
 public abstract class Dog implements Comparable<Dog>{
 	private String name;
 	private double speed;
+	private String price;
 	
 	public String getName() {
 		return name;
 	}
 	
-	
 	public double getSpeed() {
 		return speed;
+	}
+
+	public void setPrice(String price) {
+		this.price = price;
+	}
+
+	public String getPrice() {
+		return price;
 	}
 
 	@Override

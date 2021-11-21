@@ -64,6 +64,7 @@ public class Race {
         this.price.printAvaiablePrices();
 
         winnerprice = price.selectSpecialPrice();
+        this.dogs.get(0).setPrice(winnerprice);
     }
 
     private void createDogs() {
