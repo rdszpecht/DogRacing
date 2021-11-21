@@ -1,6 +1,5 @@
 package dogRacing.dogs;
 
-import dogRacing.Prices.Price;
 
 public abstract class Dog implements Comparable<Dog>{
 	private String name;

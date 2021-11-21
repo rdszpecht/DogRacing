@@ -36,6 +36,7 @@ public class RaceTest {
             this.race = new Race();
             this.race.runRace();
 
+
             assertTrue(this.race.getDogs().get(0).getSpeed() > this.race.getDogs().get(1).getSpeed());
         }
     }

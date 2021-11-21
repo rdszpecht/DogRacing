@@ -22,25 +22,13 @@ public class Race {
         this.price = new Price();
     }
 
-    public void runRace(){
-        console.writeln(Message.WELCOME.toString());
-
-        createDogs();
-        for (int i = 0; i < NUMBER_DOGS; i++) {
-            console.writeln(dogs.get(i).getName() + Message.SPEED_OF + dogs.get(i).getSpeed());
-        }
-
-        competeInRace();
-
-        winnerPriceSelection();
-
-        console.writeln(dogs.get(0).getName() + Message.OBTAINED + this.dogs.get(0).getPrice() + Message.WINNER_PRICE);
-        console.writeln(dogs.get(1).getName() + Message.LOSER_PRICE);
-
-        console.writeln(Message.GOODBYE.toString());
+    public void celebrateCompetition(){
+        signInDogs();
+        runRace();
+        racingFinale();
     }
 
-    private void competeInRace() {
+    public void runRace(){
         Collections.sort(dogs);
         Collections.reverse(dogs);
 
@@ -51,6 +39,28 @@ public class Race {
         }
     }
 
+    private void racingFinale(){
+        winnerPriceSelection();
+
+        console.writeln(dogs.get(0).getName() + Message.OBTAINED + this.dogs.get(0).getPrice() + Message.WINNER_PRICE);
+        console.writeln(dogs.get(1).getName() + Message.LOSER_PRICE);
+        console.writeln(Message.GOODBYE.toString());
+    }
+
+    private void signInDogs() {
+        console.writeln(Message.WELCOME.toString());
+
+        for (int i = 0; i < NUMBER_DOGS; i++) {
+            String dogName = console.readString(Message.NAME_SELECT.toString());
+            String dogBreed = console.readString(Message.BREED_SELECT.toString());
+            dogs.add(DogBuilder.newDog(dogName, dogBreed));
+        }
+        for (int i = 0; i < NUMBER_DOGS; i++) {
+            console.writeln(dogs.get(i).getName() + Message.SPEED_OF + dogs.get(i).getSpeed());
+        }
+    }
+
+
     private void winnerPriceSelection() {
         console.write(Message.RECOGNITION + dogs.get(0).getName());
         console.writeln(Message.WINNER.toString());
@@ -59,13 +69,6 @@ public class Race {
         this.dogs.get(0).setPrice(price.selectSpecialPrice());
     }
 
-    private void createDogs() {
-        for (int i = 0; i < NUMBER_DOGS; i++) {
-            String dogName = console.readString(Message.NAME_SELECT.toString());
-            String dogBreed = console.readString(Message.BREED_SELECT.toString());
-            dogs.add(DogBuilder.newDog(dogName, dogBreed));
-        }
-    }
 
     public List<Dog> getDogs() {
         return dogs;
