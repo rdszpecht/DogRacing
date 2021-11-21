@@ -1,13 +1,13 @@
 package dogRacing.dogs;
 
-public class MixedRace extends Dog{
+public class MixedBreed extends Dog{
     private final int RAN_FACTOR = 1;
     private final int EXTRA_SPEED = 9;
 
     private String name;
     private double speed;
 
-    public MixedRace(String name){
+    public MixedBreed(String name){
         this.name = name;
         this.speed = calculateSpeed();
     }

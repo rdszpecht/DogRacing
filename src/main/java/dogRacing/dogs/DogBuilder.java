@@ -22,10 +22,10 @@ public abstract class DogBuilder {
                 return new Dalmatian(name);
 
             default :
-                return new MixedRace(name);
+                return new MixedBreed(name);
         }
     }
     public static Dog newDog(){
-        return new MixedRace("Unknown");
+        return new MixedBreed("Unknown");
     }
 }
