@@ -17,23 +17,23 @@ public class DogTest {
 
     @Test
     public void testGivenNewEmptyConstructorDogThenHasUnknownName(){
-        assertTrue(this.dog.getDogName() == "Unknown");
+        assertTrue(this.dog.getName() == "Unknown");
     }
 
     @Test
     public void testGivenNewEmptyConstructorDogThenHasSpeed(){
-        assertTrue(this.dog.getDogSpeed() > 0.0);
+        assertTrue(this.dog.getSpeed() > 0.0);
     }
 
     @Test
     public void testWhenNewDogThenNameIsSameAsIntroduced(){
-        assertTrue(new Dog("Pedrito", "Doberman").getDogName() == "Pedrito");
+        assertTrue(new Dog("Pedrito", "Doberman").getName() == "Pedrito");
     }
 
 
     @Test
     public void testGivenDogThenHasSpeed(){
-        assertTrue(new Dog("Pedrito", "Doberman").getDogSpeed() > 0.0);
+        assertTrue(new Dog("Pedrito", "Doberman").getSpeed() > 0.0);
     }
 
 }

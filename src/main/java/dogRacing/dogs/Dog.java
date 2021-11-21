@@ -39,12 +39,12 @@ public class Dog {
 		}
 	}
 	
-	public String getDogName() {
+	public String getName() {
 		return name;
 	}
 	
 	
-	public double getDogSpeed() {
+	public double getSpeed() {
 		return speed;
 	}
 }

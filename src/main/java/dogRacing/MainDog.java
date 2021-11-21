@@ -18,17 +18,17 @@ public class MainDog {
         Dog d2 = DogBuilder.newDog(d2n, d2b);
         String winner = "";
         String loser = "";
-        console.writeln(d1.getDogName() + " has a speed of: " + d1.getDogSpeed());
-        console.writeln(d2.getDogName() + " has a speed of: " + d2.getDogSpeed());
+        console.writeln(d1.getName() + " has a speed of: " + d1.getSpeed());
+        console.writeln(d2.getName() + " has a speed of: " + d2.getSpeed());
 
-        if (d1.getDogSpeed() > d2.getDogSpeed()) {
-            console.writeln(d1.getDogName() + " is the fastest dog");
-            winner = d1.getDogName();
-            loser = d2.getDogName();
-        } else if ((d2.getDogSpeed() > d1.getDogSpeed())) {
-            console.writeln(d2.getDogName() + " is the fastest dog");
-            winner = d2.getDogName();
-            loser = d1.getDogName();
+        if (d1.getSpeed() > d2.getSpeed()) {
+            console.writeln(d1.getName() + " is the fastest dog");
+            winner = d1.getName();
+            loser = d2.getName();
+        } else if ((d2.getSpeed() > d1.getSpeed())) {
+            console.writeln(d2.getName() + " is the fastest dog");
+            winner = d2.getName();
+            loser = d1.getName();
         } else {
             console.writeln("Both dogs are equally as fast");
 
