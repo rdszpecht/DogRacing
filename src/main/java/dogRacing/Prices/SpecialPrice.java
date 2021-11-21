@@ -27,8 +27,8 @@ public class SpecialPrice {
     public String selectSpecialPrice() {
         Console console = Console.getInstance();
 
-        int optionwinner = console.readInt("");
+        int priceId = console.readInt("");
 
-        return prices.get(optionwinner);
+        return prices.get(priceId);
     }
 }
