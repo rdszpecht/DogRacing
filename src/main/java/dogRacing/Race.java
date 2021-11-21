@@ -45,8 +45,8 @@ public class Race {
         winner = "";
         loser = "";
 
-        //Collections.sort(dogs, Collections.reverseOrder());
         Collections.sort(dogs);
+        Collections.reverse(dogs);
 
         winner = dogs.get(0).getName();
         loser = dogs.get(1).getName();
