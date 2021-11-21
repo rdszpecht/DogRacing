@@ -28,7 +28,7 @@ public class Race {
         racingFinale();
     }
 
-    public void runRace(){
+    private void runRace(){
         Collections.sort(dogs);
         Collections.reverse(dogs);
 

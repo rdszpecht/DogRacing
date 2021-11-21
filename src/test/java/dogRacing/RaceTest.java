@@ -34,7 +34,7 @@ public class RaceTest {
             when(this.console.readString("Input the breed of your dog: ")).thenReturn("Doberman");
 
             this.race = new Race();
-            this.race.runRace();
+            this.race.celebrateCompetition();
 
 
             assertTrue(this.race.getDogs().get(0).getSpeed() > this.race.getDogs().get(1).getSpeed());
