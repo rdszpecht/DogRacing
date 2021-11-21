@@ -7,6 +7,7 @@ import dogRacing.utils.Message;
 import utils.Console;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Race {
@@ -44,17 +45,14 @@ public class Race {
         winner = "";
         loser = "";
 
-        if (dogs.get(0).getSpeed() > dogs.get(1).getSpeed()) {
+        Collections.sort(dogs);
+
+        if (dogs.get(0).getSpeed() == dogs.get(1).getSpeed()) {
+            console.writeln(Message.DRAW.toString());
+        }else{
             console.writeln(dogs.get(0).getName() + " " + Message.FASTEST_DOG);
             winner = dogs.get(0).getName();
             loser = dogs.get(1).getName();
-        } else if ((dogs.get(1).getSpeed() > dogs.get(0).getSpeed())) {
-            console.writeln(dogs.get(1).getName() + " " + Message.FASTEST_DOG);
-            winner = dogs.get(1).getName();
-            loser = dogs.get(0).getName();
-        } else {
-            console.writeln(Message.DRAW.toString());
-
         }
     }
 
@@ -73,4 +71,9 @@ public class Race {
             dogs.add(DogBuilder.newDog(dogName, dogBreed));
         }
     }
+
+    public List<Dog> getDogs() {
+        return dogs;
+    }
+
 }

@@ -19,12 +19,6 @@ public class DogRacingTest {
     @Mock
     private Console console;
 
-    @Mock
-    private Dog fastestDog;
-
-    @Mock
-    private Dog slowestDog;
-
     private DogRacing dogRacing;
     private String[] args;
 
@@ -32,9 +26,6 @@ public class DogRacingTest {
     public void beforeEach(){
         this.args = new String[1];
         this.dogRacing = new DogRacing();
-
-        this.fastestDog = DogBuilder.newDog("Assasin", "greyhound");
-        this.slowestDog = DogBuilder.newDog("Slowbro", "dalmatian");
     }
 
     @Test

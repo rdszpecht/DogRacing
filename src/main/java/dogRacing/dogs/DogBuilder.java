@@ -1,9 +1,11 @@
 package dogRacing.dogs;
 
+import java.util.Locale;
+
 public abstract class DogBuilder {
 
     public static Dog newDog(String name, String breed){
-        switch (breed) {
+        switch (breed.toLowerCase(Locale.ROOT)) {
             case "greyhound":
                 return new Greyhound(name);
 
