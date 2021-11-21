@@ -15,7 +15,6 @@ public class Race {
     private Console console;
     private List<Dog> dogs = new ArrayList<>();
     private final int NUMBER_DOGS = 2;
-    private String winner, loser;
     private Price price;
 
     public Race(){
@@ -35,21 +34,15 @@ public class Race {
 
         winnerPriceSelection();
 
-        console.writeln(winner + Message.OBTAINED + this.dogs.get(0).getPrice() + Message.WINNER_PRICE);
-        console.writeln(loser + Message.LOSER_PRICE);
+        console.writeln(dogs.get(0).getName() + Message.OBTAINED + this.dogs.get(0).getPrice() + Message.WINNER_PRICE);
+        console.writeln(dogs.get(1).getName() + Message.LOSER_PRICE);
 
         console.writeln(Message.GOODBYE.toString());
     }
 
     private void competeInRace() {
-        winner = "";
-        loser = "";
-
         Collections.sort(dogs);
         Collections.reverse(dogs);
-
-        winner = dogs.get(0).getName();
-        loser = dogs.get(1).getName();
 
         if (dogs.get(0).getSpeed() == dogs.get(1).getSpeed()) {
             console.writeln(Message.DRAW.toString());
@@ -59,7 +52,7 @@ public class Race {
     }
 
     private void winnerPriceSelection() {
-        console.write(Message.RECOGNITION + winner);
+        console.write(Message.RECOGNITION + dogs.get(0).getName());
         console.writeln(Message.WINNER.toString());
         this.price.printAvaiablePrices();
 
