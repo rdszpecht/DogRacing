@@ -12,24 +12,38 @@ public class Race {
     private Console console;
     private List<Dog> dogs = new ArrayList<>();
     private final int NUMBER_DOGS = 2;
+    private String winner, loser, winnerprice;
 
     public Race(){
         this.console = Console.getInstance();
     }
 
     public void runRace(){
-        console.writeln("Welcome to the first Dog Race");
-        
-        for (int i = 0; i < NUMBER_DOGS; i++) {
-            String dogName = console.readString("Input a name for your pet: ");
-            String dogBreed = console.readString("Input the breed of your dog: ");
-            dogs.add(DogBuilder.newDog(dogName, dogBreed));
+        welcomeMessage();
 
-            console.writeln(dogs.get(i).getName() + " has a speed of: " + dogs.get(i).getSpeed());
-        }
+        createDogs();
 
-        String winner = "";
-        String loser = "";
+        competeInRace();
+
+        winnerPriceSelection();
+
+        prices();
+
+        finale();
+    }
+
+    private void finale() {
+        console.writeln("Thanks for participating!!");
+    }
+
+    private void prices() {
+        console.writeln(winner + " has obtained " + winnerprice + " as a reward for him winning, also a special signature bowl!");
+        console.writeln(loser + " also wins a special signature bowl for his great performance!");
+    }
+
+    private void competeInRace() {
+        winner = "";
+        loser = "";
 
         if (dogs.get(0).getSpeed() > dogs.get(1).getSpeed()) {
             console.writeln(dogs.get(0).getName() + " is the fastest dog");
@@ -43,13 +57,15 @@ public class Race {
             console.writeln("Both dogs are equally as fast");
 
         }
+    }
 
+    private void winnerPriceSelection() {
         console.writeln("As a recognition for " + winner + ", winner of the race, he can chose a special price");
         console.writeln("1. Pack of ropes to pull");
         console.writeln("2. Dog bed");
         console.writeln("3. Pack of balls");
         console.writeln("4. Dog bottle of water");
-        String winnerprice = "";
+        winnerprice = "";
         int optionwinner = console.readInt("");
         switch (optionwinner) {
             case 1:
@@ -64,11 +80,19 @@ public class Race {
             default:
                 winnerprice = "Dog bottle of water";
         }
+    }
 
-        console.writeln(winner + " has obtained " + winnerprice + " as a reward for him winning, also a special signature bowl!");
-        console.writeln(loser + " also wins a special signature bowl for his great performance!");
+    private void createDogs() {
+        for (int i = 0; i < NUMBER_DOGS; i++) {
+            String dogName = console.readString("Input a name for your pet: ");
+            String dogBreed = console.readString("Input the breed of your dog: ");
+            dogs.add(DogBuilder.newDog(dogName, dogBreed));
 
-        console.writeln("Thanks for participating!!");
+            console.writeln(dogs.get(i).getName() + " has a speed of: " + dogs.get(i).getSpeed());
+        }
+    }
 
+    private void welcomeMessage() {
+        console.writeln("Welcome to the first Dog Race");
     }
 }
