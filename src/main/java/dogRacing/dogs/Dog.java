@@ -12,7 +12,6 @@ public class Dog {
 	}
 
 	public Dog(String name, String breed) {
-
 		this.name = name;
 		this.breed = breed;
 		this.speed = breedSpeed();
