@@ -1,4 +1,4 @@
-package DogRacing;
+package dogRacing;
 
 public class Dog {
 	private String name;
