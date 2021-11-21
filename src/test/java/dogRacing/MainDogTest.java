@@ -104,4 +104,17 @@ public class MainDogTest {
         }
     }
 
+    @Test
+    public void testGivenNewMainDogWhenCreatingADobermanThenNameHasBeenStored(){
+        try (MockedStatic<Console> console = mockStatic(Console.class)) {
+            console.when(Console::getInstance).thenReturn(this.console);
+            when(this.console.readInt(anyString())).thenReturn(3);
+            when(this.console.readString("Input a name for your pet: ")).thenReturn("Paco");
+            when(this.console.readString("Input the breed of your dog: ")).thenReturn("doberman");
+
+            this.mainDog.main(this.args);
+            verify(this.console).writeln("Paco is the fastest dog");
+        }
+    }
+
 }

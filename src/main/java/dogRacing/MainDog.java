@@ -1,6 +1,7 @@
 package dogRacing;
 
 import dogRacing.dogs.Dog;
+import dogRacing.dogs.DogBuilder;
 import utils.Console;
 
 public class MainDog {
@@ -11,10 +12,10 @@ public class MainDog {
         console.writeln("Welcome to the first Dog Race");
         String d1n = console.readString("Input a name for your pet: ");
         String d1b = console.readString("Input the breed of your dog: ");
-        Dog d1 = new Dog(d1n, d1b);
+        Dog d1 = DogBuilder.newDog(d1n, d1b);
 		String d2n = console.readString("Input a name for your pet: ");
 		String d2b = console.readString("Input the breed of your dog: ");
-        Dog d2 = new Dog(d2n, d2b);
+        Dog d2 = DogBuilder.newDog(d2n, d2b);
         String winner = "";
         String loser = "";
         console.writeln(d1.getDogName() + " has a speed of: " + d1.getDogSpeed());
