@@ -14,7 +14,7 @@ package dogRacing;
     import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class MainDogTest {
+public class DogRacingTest {
 
     @Mock
     private Console console;
@@ -25,13 +25,13 @@ public class MainDogTest {
     @Mock
     private Dog slowestDog;
 
-    private MainDog mainDog;
+    private DogRacing dogRacing;
     private String[] args;
 
     @BeforeEach
     public void beforeEach(){
         this.args = new String[1];
-        this.mainDog = new MainDog();
+        this.dogRacing = new DogRacing();
 
         this.fastestDog = DogBuilder.newDog("Assasin", "greyhound");
         this.slowestDog = DogBuilder.newDog("Slowbro", "dalmatian");
@@ -45,7 +45,7 @@ public class MainDogTest {
             when(this.console.readString("Input a name for your pet: ")).thenReturn("Scooby");
             when(this.console.readString("Input the breed of your dog: ")).thenReturn("Doberman");
 
-            this.mainDog.main(this.args);
+            this.dogRacing.main(this.args);
 
             verify(this.console, times(12)).writeln(anyString());
         }
@@ -59,7 +59,7 @@ public class MainDogTest {
             when(this.console.readString("Input a name for your pet: ")).thenReturn("Scooby");
             when(this.console.readString("Input the breed of your dog: ")).thenReturn("Doberman");
 
-            this.mainDog.main(this.args);
+            this.dogRacing.main(this.args);
 
             verify(this.console).writeln("Welcome to the first Dog Race");
         }
@@ -73,7 +73,7 @@ public class MainDogTest {
             when(this.console.readString("Input a name for your pet: ")).thenReturn("Scooby");
             when(this.console.readString("Input the breed of your dog: ")).thenReturn("Doberman");
 
-            this.mainDog.main(this.args);
+            this.dogRacing.main(this.args);
 
             verify(this.console).writeln("Thanks for participating!!");
         }
@@ -87,7 +87,7 @@ public class MainDogTest {
             when(this.console.readString("Input a name for your pet: ")).thenReturn("Scooby");
             when(this.console.readString("Input the breed of your dog: ")).thenReturn("Doberman");
 
-            this.mainDog.main(this.args);
+            this.dogRacing.main(this.args);
             verify(this.console).writeln("Scooby has obtained Pack of balls as a reward for him winning, also a special signature bowl!");
         }
     }
@@ -100,7 +100,7 @@ public class MainDogTest {
             when(this.console.readString("Input a name for your pet: ")).thenReturn("Scooby");
             when(this.console.readString("Input the breed of your dog: ")).thenReturn("Doberman");
 
-            this.mainDog.main(this.args);
+            this.dogRacing.main(this.args);
             verify(this.console).writeln("Scooby also wins a special signature bowl for his great performance!");
         }
     }
@@ -113,7 +113,7 @@ public class MainDogTest {
             when(this.console.readString("Input a name for your pet: ")).thenReturn("Paco");
             when(this.console.readString("Input the breed of your dog: ")).thenReturn("doberman");
 
-            this.mainDog.main(this.args);
+            this.dogRacing.main(this.args);
             verify(this.console).writeln("Paco is the fastest dog");
         }
     }
