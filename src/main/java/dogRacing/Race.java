@@ -45,14 +45,16 @@ public class Race {
         winner = "";
         loser = "";
 
+        //Collections.sort(dogs, Collections.reverseOrder());
         Collections.sort(dogs);
+
+        winner = dogs.get(0).getName();
+        loser = dogs.get(1).getName();
 
         if (dogs.get(0).getSpeed() == dogs.get(1).getSpeed()) {
             console.writeln(Message.DRAW.toString());
         }else{
             console.writeln(dogs.get(0).getName() + " " + Message.FASTEST_DOG);
-            winner = dogs.get(0).getName();
-            loser = dogs.get(1).getName();
         }
     }
 

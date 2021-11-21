@@ -1,25 +1,28 @@
 package dogRacing;
 
-import dogRacing.dogs.Dog;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.*;
+import org.mockito.junit.jupiter.MockitoExtension;
 import utils.Console;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 
+@ExtendWith(MockitoExtension.class)
 public class RaceTest {
+
     @Mock
     private Console console;
-
-    private Dog fastestDog, slowestDog;
 
     private Race race;
 
     @BeforeEach
     public void beforeEach(){
-        this.race = spy(new Race());
+        this.race = new Race();
     }
 
     @Test
@@ -30,9 +33,10 @@ public class RaceTest {
             when(this.console.readString("Input a name for your pet: ")).thenReturn("Scooby");
             when(this.console.readString("Input the breed of your dog: ")).thenReturn("Doberman");
 
+            this.race = new Race();
             this.race.runRace();
 
-            assertTrue(this.race.getDogs().get(0).getSpeed() >= this.race.getDogs().get(1).getSpeed());
+            assertTrue(this.race.getDogs().get(0).getSpeed() > this.race.getDogs().get(1).getSpeed());
         }
     }
 }
