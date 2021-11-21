@@ -66,21 +66,8 @@ public class Race {
         console.writeln("As a recognition for " + winner + ", winner of the race, he can chose a special price");
         this.specialPrice.printAvaiablePrices();
 
-        winnerprice = "";
-        int optionwinner = console.readInt("");
-        switch (optionwinner) {
-            case 1:
-                winnerprice = "Pack of ropes to pull";
-                break;
-            case 2:
-                winnerprice = "Dog bed";
-                break;
-            case 3:
-                winnerprice = "Pack of balls";
-                break;
-            default:
-                winnerprice = "Dog bottle of water";
-        }
+        winnerprice = specialPrice.selectSpecialPrice();
+
     }
 
     private void createDogs() {

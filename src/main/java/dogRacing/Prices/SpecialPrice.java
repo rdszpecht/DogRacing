@@ -23,4 +23,12 @@ public class SpecialPrice {
             console.writeln(entry.getKey() + ". " + entry.getValue());
         }
     }
+
+    public String selectSpecialPrice() {
+        Console console = Console.getInstance();
+
+        int optionwinner = console.readInt("");
+
+        return prices.get(optionwinner);
+    }
 }
