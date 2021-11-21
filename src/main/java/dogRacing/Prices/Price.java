@@ -5,11 +5,11 @@ import utils.Console;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SpecialPrice {
+public class Price {
     private String[] priceNames = {"Pack of ropes to pull", "Dog bed", "Pack of balls", "Dog bottle of water"};
     private Map<Integer, String> prices = new HashMap<>();
 
-    public SpecialPrice(){
+    public Price(){
         int priceNumber = 1;
         for(String priceName: priceNames){
             prices.put(priceNumber, priceName);

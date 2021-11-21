@@ -1,6 +1,6 @@
 package dogRacing;
 
-import dogRacing.Prices.SpecialPrice;
+import dogRacing.Prices.Price;
 import dogRacing.dogs.Dog;
 import dogRacing.dogs.DogBuilder;
 import utils.Console;
@@ -14,11 +14,11 @@ public class Race {
     private List<Dog> dogs = new ArrayList<>();
     private final int NUMBER_DOGS = 2;
     private String winner, loser, winnerprice;
-    private SpecialPrice specialPrice;
+    private Price price;
 
     public Race(){
         this.console = Console.getInstance();
-        this.specialPrice = new SpecialPrice();
+        this.price = new Price();
     }
 
     public void runRace(){
@@ -64,9 +64,9 @@ public class Race {
 
     private void winnerPriceSelection() {
         console.writeln("As a recognition for " + winner + ", winner of the race, he can chose a special price");
-        this.specialPrice.printAvaiablePrices();
+        this.price.printAvaiablePrices();
 
-        winnerprice = specialPrice.selectSpecialPrice();
+        winnerprice = price.selectSpecialPrice();
 
     }
 
