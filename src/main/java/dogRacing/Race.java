@@ -1,5 +1,6 @@
 package dogRacing;
 
+import dogRacing.Prices.SpecialPrice;
 import dogRacing.dogs.Dog;
 import dogRacing.dogs.DogBuilder;
 import utils.Console;
@@ -13,9 +14,11 @@ public class Race {
     private List<Dog> dogs = new ArrayList<>();
     private final int NUMBER_DOGS = 2;
     private String winner, loser, winnerprice;
+    private SpecialPrice specialPrice;
 
     public Race(){
         this.console = Console.getInstance();
+        this.specialPrice = new SpecialPrice();
     }
 
     public void runRace(){
@@ -61,10 +64,8 @@ public class Race {
 
     private void winnerPriceSelection() {
         console.writeln("As a recognition for " + winner + ", winner of the race, he can chose a special price");
-        console.writeln("1. Pack of ropes to pull");
-        console.writeln("2. Dog bed");
-        console.writeln("3. Pack of balls");
-        console.writeln("4. Dog bottle of water");
+        this.specialPrice.printAvaiablePrices();
+
         winnerprice = "";
         int optionwinner = console.readInt("");
         switch (optionwinner) {
@@ -87,7 +88,8 @@ public class Race {
             String dogName = console.readString("Input a name for your pet: ");
             String dogBreed = console.readString("Input the breed of your dog: ");
             dogs.add(DogBuilder.newDog(dogName, dogBreed));
-
+        }
+        for (int i = 0; i < NUMBER_DOGS; i++) {
             console.writeln(dogs.get(i).getName() + " has a speed of: " + dogs.get(i).getSpeed());
         }
     }
